@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: head">
+        <title th:id="pageTitle">Cari Mahasiswa</title>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+
+	
+	<form action="/mahasiswa/cari" method="GET">
+	<div class="col-md-12 mb-12">
+		<h1 class="page-header">Cari Mahasiswa</h1>
+		<div class="row">
+              <div class="col-md-3 mb-3">
+			<label for="gpa">Universitas</label> 
+			<select name ="univ" id ="universitas" class="custom-select d-block w-100" th:disabled="${not #lists.isEmpty(fakultas)} ? 'true' : 'false'">
+				 <option th:each="universitas : ${universitas}" th:value="${universitas.id}" th:text="${universitas.nama_univ}" th:selected="${universitas.id} == ${id_univ}"/>
+				
+			</select>
+			 	<div th:if="${not #lists.isEmpty(fakultas)}">
+				 	<input th:value="${id_univ}" type="hidden" name="univ" th:readonly="true"/>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+            <div class="col-md-3 mb-3">
+				<div th:if="${not #lists.isEmpty(fakultas)}">
+					<label for="gpa">Fakultas</label> 
+						<select name ="fakultas" class="custom-select d-block w-100" id ="fakultas" th:disabled="${not #lists.isEmpty(prodi)} ? 'true' : 'false'">
+				 			<option th:each="fakultas : ${fakultas}" th:value="${fakultas.id}" th:text="${fakultas.nama_fakultas}" th:selected="${fakultas.id} == ${id_fakultas}"/>
+						</select>
+						<div th:if="${not #lists.isEmpty(prodi)}">
+				 			<input th:value="${id_fakultas}" type="hidden" name="fakultas" th:readonly="true"/>
+						</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+            <div class="col-md-3 mb-3">
+				<div th:if="${not #lists.isEmpty(prodi)}">
+					<label for="prodi">Program Studi</label> 
+					<select name ="prodi" id ="prodi" class="custom-select d-block w-100" >
+				 		<option th:each="prodi : ${prodi}" th:value="${prodi.id}" th:text="${prodi.nama_prodi}"/>
+					</select>
+				</div>
+			</div>
+		</div>
+			
+		<div>
+			<button type="submit" class="btn btn-primary">Cari</button>
+		</div>
+	</div>
+	</form>
+
+</body>
+
+</html>
+

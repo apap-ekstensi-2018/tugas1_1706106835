@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+        <title id="pageTitle">Update Student</title>
+        	<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="../../bootstrap/css/custom.css"/>
+	<link rel="stylesheet" href="../../bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css"/>
+	
+	<link rel="stylesheet" href="../../vendor/dataTables.min.css"/>
+	<script src="../../bootstrap/jquery-1.12.4.js" type="text/javascript"></script>
+	<script src="../../vendor/dataTables.min.js" type="text/javascript"></script>
+	<script src="../../bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+
+
+	<div class="col-md-12 mb-12">
+	<h1 class="page-header">Ubah Data Mahasiswa</h1>
+
+	<form action="#" th:action="@{/mahasiswa/ubah/}+${npm}" th:object="${student}" method="POST">
+		
+		<input type="hidden" name="id" readonly = "true" th:value="${student.id}" th:field="*{id}" th:required="required"/>
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="npm">Nama Lengkap</label> <input type="text" name="nama" th:value="${student.nama}" th:field="*{nama}" class="form-control" th:required="required"/>
+		</div>
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="name">Tempat Lahir</label> <input type="text" th:value="${student.tempat_lahir}" name="tempat_lahir" th:field="*{tempat_lahir}" class="form-control" th:required="required"/>
+		</div>
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="gpa">Tanggal Lahir</label> <input type="text" id="tanggal_lahir" th:value = "${student.tanggal_lahir}" name="tanggal_lahir" th:field="*{tanggal_lahir}" class="form-control" th:required="required"/>
+		</div>
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="gpa">Jenis Kelamin</label>
+			<select name="jenis_kelamin" id="jenis_kelamin" class="custom-select d-block w-100" >
+				<option value = "0" text="Laki-Laki">Laki-Laki</option>
+				<option value = "1" text="Perempuan">Perempuan</option>
+			</select>
+		</div>
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="gpa">Agama</label> <input type="text" name="agama" th:value = "${student.agama}" th:field="*{agama}" class="form-control" th:required="required"/>
+		</div>
+		</div>
+
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="gpa">Golongan Darah</label> <input type="text" name="golongan_darah" th:value = "${student.golongan_darah}" th:field="*{golongan_darah}" class="form-control" th:required="required"/>
+		</div>
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="gpa">Tahun Masuk</label> <input type="text" name="tahun_masuk" h:value = "${student.tahun_masuk}" th:field="*{tahun_masuk}" class="form-control" th:required="required"/>
+		</div>
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="gpa">Jalur Masuk</label>
+			<select name="jalur_masuk" class="custom-select d-block w-100" th:required="required">
+				<option value = "Undangan Olimpiade 55"> Undangan Olimpiade</option>
+				<option value = "Undangan Regular / SNMPTN 54"> Undangan Reguler / SNMPTN</option>
+				<option value = "Undangan Paralel / PPKB 55"> Undangan Paralel / PPKB</option>
+				<option value = "Ujian Tulis Bersama / SBMPN 57"> Ujian Tulis Bersama / SBPMTN</option>
+				<option value = "Ujian Tulis Mandiri 62"> Ujian Tulis Mandiri</option>
+			</select>
+		</div>
+		</div>
+		
+		<div class="row">
+		<div class="col-md-3 mb-3">
+			<label for="gpa">Program Studi</label> 
+			<select name ="program_studi" id ="program_studi" class="custom-select d-block w-100" th:required="required">
+				 <option th:each="prodi : ${prodi}" th:value="${prodi.kode_prodi}" th:text="${prodi.nama_prodi}" th:selected="${prodi.id} == ${student.id_prodi}"/>
+			</select>
+		</div>
+		</div>
+
+		<div>
+			<button type="submit" name="action" value="save" class="btn btn-primary">Save</button>
+		</div>
+	</form>
+	</div>
+	<script>
+	$(document).ready(function() {
+		$('#tanggal_lahir').datetimepicker({
+		    format: 'mm-dd-yyyy'
+		});
+	});
+	
+	</script>
+</body>
+
+</html>
+

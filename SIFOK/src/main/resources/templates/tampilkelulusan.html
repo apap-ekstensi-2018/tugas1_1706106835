@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: head">
+        <title th:id="pageTitle">Persentase Kelulusan</title>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+
+	
+
+	<div class="container">          
+  		<h1 class="page-header">Persentase Kelulusan</h1>
+  		<table class="table">
+    			<tbody>
+      			<tr>
+        				<td>Tahun</td>
+        				<td><a th:text="${tahun_masuk}"></a></td>
+        				<td rowspan="2"><h2 th:text="${persentase}+'%'"></h2>
+        				<a th:text="${jumlahKelulusan}+' dari '+${jumlahMahasiswa} +' Mahasiswa telah lulus'"></a>
+        				</td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Program Studi</td>
+        				<td><a th:text="${programStudi.nama_prodi}"></a></td>
+        				
+      			</tr>
+      			
+      			<tr>
+      				<td>Fakultas</td>
+        				<td><a th:text="${programStudi.fakultas}"></a></td>
+      			</tr>
+      			
+				<tr>
+      				<td>Universitas</td>
+        				<td><a th:text="${programStudi.universitas}"></a></td>
+      			</tr>
+        			
+        			<tr>
+        				
+      			</tr>
+      			
+   		</tbody>
+  	</table>
+	</div>
+</body>
+
+</html>
+

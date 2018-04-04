@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/fragment :: head">
+        <title id="pageTitle">View All Students</title>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+
+
+	<div class="container">         
+  		<h1 class="page-header">Lihat Data Mahasiswa Berdasarkan NPM</h1>
+  		<table class="table table-striped">
+    			<tbody>
+      			<tr>
+        				<td>NPM</td>
+        				<td><a th:text="${student.npm}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Nama</td>
+        				<td><a th:text="${student.nama}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Tempat/Tanggal Lahir</td>
+        				<td><a th:text="${student.tempat_lahir}+' '+${student.tanggal_lahir}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Program Studi</td>
+        				<td><a th:text="${student.program_studi}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Fakultas</td>
+        				<td><a th:text="${student.fakultas}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Universitas</td>
+        				<td><a th:text="${student.universitas}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Jenis Kelamin</td>
+        				<td><a th:text="${student.jenis_kelamin==0} ? 'Laki-Laki' : 'Perempuan'">Jenis Kelamin</a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>JAgama</td>
+        				<td><a th:text="${student.agama}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Golongan Darah</td>
+        				<td><a th:text="${student.golongan_darah}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Tahun Masuk</td>
+        				<td><a th:text="${student.tahun_masuk}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Jalur Masuk</td>
+        				<td><a th:text="${student.jalur_masuk}"></a></td>
+      			</tr>
+      			
+      			<tr>
+        				<td>Status</td>
+        				<td><a th:text="${student.status}"></a> <a type="button" class="btn btn-success" style="color:white">Lulus</a> <button type="button" class="btn btn-danger" style="color:white">Non-Aktifkan</button></td>
+      			</tr>
+   		</tbody>
+  	</table>
+	</div>
+</body>
+
+</html>
+

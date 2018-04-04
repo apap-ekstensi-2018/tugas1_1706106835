@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: head">
+        <title th:id="pageTitle">Kelulusan</title>
+</head>
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+        <h5 th:text="'Lihat daftar Mahasiswa Program Studi ' + ${prodi} + ' '+ ${fakultas}+ ' '+ ${universitas}">"></h5>
+     
+  <table id="example" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+    		<tr>
+    			<th>No</th>
+    			<th>NPM</th>
+    			<th>Nama</th>
+    			<th>Program Studi</th>
+    			<th>Tahun Masuk</th>
+    			<th>Jalur Masuk</th>
+    			<th>Detail Mahasiswa</th>
+    		</tr>
+    </thead>
+    	<tr th:each="students,iterationStatus: ${students}">
+    		
+    		<td><a th:text="${iterationStatus.count}">No. 1</a></td>
+    		<td><a th:text="${students.npm}">Student NPM</a></td>
+    		<td><a th:text="${students.nama}">Student Name></a></td>
+    		<td><a th:text="${students.program_studi}">Student Name></a></td>
+    		<td><a th:text="${students.tahun_masuk}">Student GPA</a></td>
+    		<td><a th:text="${students.jalur_masuk}">Predikat</a></td>
+    		<td><a th:href="'/mahasiswa?npm='+${students.npm}">Lihat Detail</a></td>
+       	</tr>
+      </table>
+    </body>
+    
+<script>
+    		$(document).ready(function() {
+        		$('#example').DataTable();
+    		});
+    </script>
+</html>
